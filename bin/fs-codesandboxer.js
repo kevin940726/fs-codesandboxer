@@ -4,7 +4,7 @@
 const meow = require('meow');
 const chalk = require('chalk');
 const clipboardy = require('clipboardy');
-const { getTemplate, getSandbox } = require('../');
+const fsCodeSandboxer = require('../');
 
 const cli = meow(
   chalk`
@@ -24,8 +24,7 @@ const cli = meow(
     throw new Error('Missing source directory path.');
   }
 
-  const template = await getTemplate(cli.input[0]);
-  const sandboxID = await getSandbox(template);
+  const sandboxID = await fsCodeSandboxer(cli.input[0]);
 
   await clipboardy.write(sandboxID);
 

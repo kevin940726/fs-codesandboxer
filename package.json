@@ -11,9 +11,9 @@
     "chalk": "^4.0.0",
     "clipboardy": "^2.3.0",
     "codesandbox": "^2.1.14",
+    "get-codesandbox": "^0.1.0",
     "meow": "^7.0.1",
-    "node-fetch": "^2.6.0",
-    "recursive-readdir": "^2.2.2"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "prettier": "2.0.5"

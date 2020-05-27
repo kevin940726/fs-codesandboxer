@@ -747,6 +747,14 @@ genfun@^4.0.1:
   resolved "https://registry.yarnpkg.com/genfun/-/genfun-4.0.1.tgz#ed10041f2e4a7f1b0a38466d17a5c3e27df1dfc1"
   integrity sha1-7RAEHy5KfxsKOEZtF6XD4n3x38E=
 
+get-codesandbox@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/get-codesandbox/-/get-codesandbox-0.1.0.tgz#9b1c291187f20fa45bc6be61ad57fa2d2cbd37e5"
+  integrity sha512-uS4e6NE5Kko3y5i5Y756wOBdEBBJDX4mSo89I1u7O2B8gaUHV9tF7crQ9L+sF/2CoTp6O6qyeO7eN0AoyYFxTw==
+  dependencies:
+    node-fetch "^2.6.0"
+    recursive-readdir "^2.2.2"
+
 get-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"

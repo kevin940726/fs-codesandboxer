@@ -26,12 +26,11 @@ yarn add fs-codesandboxer
 ```
 
 ```js
-const { getTemplate, getSandbox } = require('fs-codesandboxer');
+const fsCodeSandboxer = require('fs-codesandboxer');
 
-const template = await getTemplate(
+const sandboxID = await fsCodeSandboxer(
   path.resolve(process.cwd(), './examples/react')
 );
-const sandboxID = await getSandbox(template);
 
 console.log(sandboxID); // "2qxth"
 ```

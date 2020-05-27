@@ -1,53 +1,15 @@
 'use strict';
 
-const fs = require('fs').promises;
-const path = require('path');
-const readdir = require('recursive-readdir');
+const getCodesSandbox = require('get-codesandbox');
 const { getParameters } = require('codesandbox/lib/api/define');
 const fetch = require('node-fetch');
 
-const IGNORE_PATHS = [
-  '.gitignore',
-  '*.log',
-  '.DS_Store',
-  'node_modules',
-  'package-lock.json',
-  'yarn.lock',
-  '.yarn',
-  '.pnp.js',
-  '.cache',
-];
+async function fsCodeSandboxer(directoryPath) {
+  const sandbox = await getCodesSandbox(`file:${directoryPath}`);
 
-exports.getTemplate = async function getTemplate(directoryPath) {
-  let absDirectoryPath;
+  const parameters = getParameters(sandbox);
 
-  if (path.isAbsolute(directoryPath)) {
-    absDirectoryPath = directoryPath;
-  } else {
-    absDirectoryPath = path.resolve(process.cwd(), directoryPath);
-  }
-
-  const filePaths = await readdir(absDirectoryPath, IGNORE_PATHS);
-
-  const files = {};
-
-  for (const filePath of filePaths) {
-    const relativePath = path.relative(absDirectoryPath, filePath);
-
-    files[relativePath] = {
-      content: await fs.readFile(filePath, 'utf8'),
-    };
-  }
-
-  return {
-    files,
-  };
-};
-
-exports.getSandbox = async function getSandbox(template) {
-  const parameters = getParameters(template);
-
-  const { sandbox_id } = await fetch(
+  const { sandbox_id, error } = await fetch(
     'https://codesandbox.io/api/v1/sandboxes/define',
     {
       method: 'POST',
@@ -56,5 +18,14 @@ exports.getSandbox = async function getSandbox(template) {
     }
   ).then((res) => res.json());
 
+  if (error) {
+    throw error;
+  }
+
   return sandbox_id;
-};
+}
+
+module.exports = exports = fsCodeSandboxer;
+Object.defineProperty(exports, '__esModule', { value: true });
+exports.default = fsCodeSandboxer;
+exports.fsCodeSandboxer = fsCodeSandboxer;
