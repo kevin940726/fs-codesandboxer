@@ -1,6 +1,6 @@
 {
   "name": "fs-codesandboxer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Create CodeSandbox from file system",
   "main": "index.js",
   "repository": "https://github.com/kevin940726/fs-codesandboxer",
