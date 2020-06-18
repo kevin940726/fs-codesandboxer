@@ -1,12 +1,12 @@
 'use strict';
 
-const { getCodesSandbox, uploadSandbox } = require('get-codesandbox');
+const { getCodeSandbox, uploadSandbox } = require('get-codesandbox');
 
 async function fsCodeSandboxer(directoryPath, options) {
-  const sandbox = await getCodesSandbox(`file:${directoryPath}`, options);
+  const sandbox = await getCodeSandbox(`file:${directoryPath}`, options);
 
   const sandboxID = await uploadSandbox(sandbox);
-  
+
   return sandboxID;
 }
 
