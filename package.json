@@ -10,7 +10,7 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "clipboardy": "^2.3.0",
-    "get-codesandbox": "^0.2.0",
+    "get-codesandbox": "^0.4.0",
     "meow": "^7.0.1"
   },
   "devDependencies": {
